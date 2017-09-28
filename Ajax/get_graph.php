@@ -1,7 +1,8 @@
 <?php
-include_once('Modeles/DHT22.php');
-include_once('Modeles/wattmeter1ch.php');
-include_once('Modeles/Test_sensor.php');
+session_start();
+include_once('../Modeles/DHT22.php');
+include_once('../Modeles/wattmeter1ch.php');
+include_once('../Modeles/Test_sensor.php');
 
 $capteur = new Sensor();
 $liste = $capteur->get_sensors();
@@ -43,5 +44,6 @@ foreach ($liste as $capteur => $value) {
 	}
 }
 
-require_once("Vues/Vue_graphique.php");
-require_once("Vues/Gabarit.php");
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+echo json_encode($entry);
