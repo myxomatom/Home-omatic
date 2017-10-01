@@ -12,8 +12,9 @@ if (isset($_GET['capteur']) && isset($_GET['type'])){
 	$color_json =[];
 	foreach ($configuration as $color)
 				{array_push($color_json,$color);}
-	
 
-	header('Content-Type: application/json');
+
+	header('Content-Type: application/json; charset=utf-8');
+	header('Access-Control-Allow-Origin: *');
 	echo json_encode($color_json);
 }
